@@ -1,5 +1,5 @@
 
-const API_URL = import.meta.env.VITE_API_URL || '';
+const API_URL = 'https://portela.app/api/hub';
 
 class ApiClient {
   private cache = new Map<string, { data: any, timestamp: number }>();
@@ -50,7 +50,9 @@ class ApiClient {
 
       if (response.status === 401) {
         localStorage.removeItem('portela_hub_token');
-        window.location.href = '/login';
+        if (!window.location.pathname.toLowerCase().includes('/login')) {
+          window.location.href = '/integracao/login';
+        }
         throw new Error('Não autorizado');
       }
 
