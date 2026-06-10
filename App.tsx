@@ -17,6 +17,11 @@ import DemandaMunicipioPage from './pages/DemandaMunicipioPage';
 import RecursosRelatorioPage from './pages/RecursosRelatorioPage';
 import ApoiadoresPage from './pages/ApoiadoresPage';
 import ApoiadorPerfilPage from './pages/ApoiadorPerfilPage';
+import BriefingPage from './pages/BriefingPage';
+import ContatosPage from './pages/ContatosPage';
+import MapaPoliticoPage from './pages/MapaPoliticoPage';
+import IAPage from './pages/IAPage';
+import EnviosPage from './pages/EnviosPage';
 
 import LoginPage from './pages/LoginPage';
 import { AppContext } from './context/AppContext';
@@ -42,6 +47,7 @@ const AppContent: React.FC = () => {
 
     if (path.includes('/municipios')) return { page: 'Municípios', params: urlParams };
     if (path.includes('/liderancas')) return { page: 'Lideranças', params: urlParams };
+    if (path.includes('/mapa')) return { page: 'Mapa Político', params: urlParams };
     if (path.includes('/assessores')) return { page: 'Assessores', params: urlParams };
     if (path.includes('/agenda')) return { page: 'Agenda', params: urlParams };
     if (path.includes('/recursos')) return { page: 'Recursos', params: urlParams };
@@ -49,12 +55,20 @@ const AppContent: React.FC = () => {
     if (path.includes('/configuracoes')) return { page: 'Configurações', params: urlParams };
     if (path.includes('/apoiador/')) return { page: 'ApoiadorPerfil', params: { id: path.split('/apoiador/')[1], ...urlParams } };
     if (path.includes('/apoiadores')) return { page: 'Apoiadores', params: urlParams };
+    if (path.includes('/briefing')) return { page: 'Briefing', params: urlParams };
+    if (path.includes('/contatos')) return { page: 'Contatos', params: urlParams };
+    if (path.includes('/ia')) return { page: 'Ferramentas IA', params: urlParams };
+    if (path.includes('/envios')) return { page: 'Envios', params: urlParams };
 
     return { page: 'Dashboard' };
   });
 
   if (!context) return null;
-  const { user, profile, isLoading, rolePermissions } = context;
+  let { user, profile, isLoading, rolePermissions } = context;
+
+  // --- LOCAL BYPASS REMOVIDO PARA HOMOLOGAÇÃO ---
+  // A Vercel agora exigirá login real para obter o Token da API
+  // -----------------------------
   const hasSynced = useRef(false);
 
   useEffect(() => {
@@ -80,21 +94,26 @@ const AppContent: React.FC = () => {
     setCurrentPage({ page, params });
 
     const pathMap: { [key: string]: string } = {
-      'Dashboard': '/',
-      'Municípios': '/municipios',
-      'Lideranças': '/liderancas',
-      'Assessores': '/assessores',
-      'Agenda': '/agenda',
-      'Recursos': '/recursos',
-      'Demandas': '/demandas',
-      'Configurações': '/configuracoes',
-      'Apoiadores': '/apoiadores'
+      'Dashboard': '/integracao/',
+      'Mapa Político': '/integracao/mapa',
+      'Municípios': '/integracao/municipios',
+      'Lideranças': '/integracao/liderancas',
+      'Assessores': '/integracao/assessores',
+      'Agenda': '/integracao/agenda',
+      'Recursos': '/integracao/recursos',
+      'Demandas': '/integracao/demandas',
+      'Configurações': '/integracao/configuracoes',
+      'Apoiadores': '/integracao/apoiadores',
+      'Briefing': '/integracao/briefing',
+      'Contatos': '/integracao/contatos',
+      'Ferramentas IA': '/integracao/ia',
+      'Envios': '/integracao/envios'
     };
 
     if (pathMap[page]) {
       window.history.pushState({}, '', pathMap[page]);
     } else if (page === 'ApoiadorPerfil' && params?.id) {
-      window.history.pushState({}, '', `/apoiador/${params.id}`);
+      window.history.pushState({}, '', `/integracao/apoiador/${params.id}`);
     }
   };
 
@@ -103,7 +122,7 @@ const AppContent: React.FC = () => {
   const renderContent = () => {
     const role = profile?.role || 'user';
     const allowedModules = role === 'master'
-        ? ['Dashboard', 'Municípios', 'Lideranças', 'Apoiadores', 'Assessores', 'Agenda', 'Recursos', 'Demandas', 'Configurações']
+        ? ['Dashboard', 'Mapa Político', 'Municípios', 'Lideranças', 'Apoiadores', 'Assessores', 'Agenda', 'Recursos', 'Demandas', 'Configurações', 'Briefing', 'Contatos', 'Ferramentas IA', 'Envios']
         : (profile?.permissions && profile.permissions.length > 0)
             ? profile.permissions
             : (rolePermissions[role] || []);
@@ -135,6 +154,8 @@ const AppContent: React.FC = () => {
     switch (currentPage.page) {
       case 'Dashboard':
         return <DashboardPage navigateTo={navigateTo} />;
+      case 'Mapa Político':
+        return <MapaPoliticoPage navigateTo={navigateTo} />;
       case 'Municípios':
         return <MunicipiosPage navigateTo={navigateTo} />;
       case 'MunicipioDetalhes':
@@ -159,6 +180,14 @@ const AppContent: React.FC = () => {
         return <ApoiadoresPage navigateTo={navigateTo} />;
       case 'ApoiadorPerfil':
         return <ApoiadorPerfilPage apoiadorId={currentPage.params?.id} navigateTo={navigateTo} />;
+      case 'Briefing':
+        return <BriefingPage navigateTo={navigateTo} />;
+      case 'Contatos':
+        return <ContatosPage navigateTo={navigateTo} />;
+      case 'Ferramentas IA':
+        return <IAPage navigateTo={navigateTo} />;
+      case 'Envios':
+        return <EnviosPage navigateTo={navigateTo} />;
       default:
         return <div className="p-8 text-center text-slate-500 font-bold">Página não encontrada</div>;
     }

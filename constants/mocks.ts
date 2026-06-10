@@ -12,7 +12,7 @@ export const MOCK_ASSESSORES: Assessor[] = [
         liderancasGerenciadas: 12,
         origem: 'Alê Portela',
         telefone: '(31) 99999-1111',
-        email: 'carlos.silva@portelahub.com',
+        email: 'carlos.silva@portela.app',
         endereco: {
             logradouro: 'Rua das Flores',
             numero: '123',
@@ -32,7 +32,7 @@ export const MOCK_ASSESSORES: Assessor[] = [
         liderancasGerenciadas: 18,
         origem: 'Lincoln Portela',
         telefone: '(35) 98888-2222',
-        email: 'maria.costa@portelahub.com',
+        email: 'maria.costa@portela.app',
         endereco: {
             logradouro: 'Av. Paulista',
             numero: '456',
@@ -52,7 +52,7 @@ export const MOCK_ASSESSORES: Assessor[] = [
         liderancasGerenciadas: 15,
         origem: 'Alê Portela',
         telefone: '(38) 97777-3333',
-        email: 'joao.santos@portelahub.com',
+        email: 'joao.santos@portela.app',
         endereco: {
             logradouro: 'Praça da Matriz',
             numero: '789',
@@ -72,7 +72,7 @@ export const MOCK_ASSESSORES: Assessor[] = [
         liderancasGerenciadas: 14,
         origem: 'Lincoln Portela',
         telefone: '(34) 96666-4444',
-        email: 'ana.oliveira@portelahub.com',
+        email: 'ana.oliveira@portela.app',
         endereco: {
             logradouro: 'Rua Principal',
             numero: '101',

@@ -33,15 +33,19 @@ const LoginPage: React.FC = () => {
                 setPassword('');
             } else {
                 // Login
-                const response = await apiClient.post<{ token: string, user: any }>('/api/auth/login', {
-                    email,
-                    password
-                });
+                try {
+                    const response = await apiClient.post<{ token: string, user: any }>('/api/auth/login', {
+                        email,
+                        password
+                    });
 
-                if (response.token) {
-                    apiClient.setToken(response.token);
-                    // Forçar recarregamento ou atualizar contexto
-                    window.location.reload();
+                    if (response.token) {
+                        apiClient.setToken(response.token);
+                        // Redireciona para o painel de integração limpando a URL de login
+                        window.location.href = '/integracao/';
+                    }
+                } catch (apiError: any) {
+                    throw new Error(apiError.message || 'Credenciais inválidas ou erro no servidor.');
                 }
             }
         } catch (err: any) {
@@ -157,7 +161,7 @@ const LoginPage: React.FC = () => {
                     <div className="pt-6 border-t border-slate-100 dark:border-slate-700">
                         <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Suporte especializado</p>
                         <a
-                            href="mailto:suporte@portelahub.com"
+                            href="mailto:suporte@portela.app"
                             className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 rounded-xl text-xs font-black hover:bg-slate-200 transition-all"
                         >
                             <span className="material-symbols-outlined text-sm">contact_support</span>

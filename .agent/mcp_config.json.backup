@@ -1,0 +1,51 @@
+{
+    "mcpServers": {
+        "context7": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp",
+                "--api-key",
+                "YOUR_API_KEY"
+            ]
+        },
+        "shadcn": {
+            "command": "npx",
+            "args": [
+                "shadcn@latest",
+                "mcp"
+            ]
+        },
+        "vps_james_portela": {
+            "command": "ssh",
+            "args": [
+                "-p",
+                "22",
+                "-i",
+                "/Users/jamesrizo/Library/CloudStorage/GoogleDrive-jjamesnt@gmail.com/Outros computadores/Dell - Nov 2025/Consultorias/portela_hub/Antigravity/Portela-Hub/.agent/ssh/id_james_mac",
+                "james_dev@69.62.103.45",
+                "npx",
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "/opt/portela-hub-frontend",
+                "/opt/portela-core",
+                "/opt/portela-hub-backend",
+                "/opt/portelahub"
+            ]
+        },
+        "vps_james_sql": {
+            "command": "ssh",
+            "args": [
+                "-p",
+                "22",
+                "-i",
+                "/Users/jamesrizo/Library/CloudStorage/GoogleDrive-jjamesnt@gmail.com/Outros computadores/Dell - Nov 2025/Consultorias/portela_hub/Antigravity/Portela-Hub/.agent/ssh/id_james_mac",
+                "james_dev@69.62.103.45",
+                "npx",
+                "-y",
+                "@modelcontextprotocol/server-postgres",
+                "postgresql://portela_hub:PortelaHub2026x@127.0.0.1:5432/portelaapp"
+            ]
+        }
+    }
+}

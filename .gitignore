@@ -50,3 +50,7 @@ public/data/*.csv
 path/to/backup/*
 temp_backup/
 
+# Confinement SSH keys
+.agent/ssh/
+
+

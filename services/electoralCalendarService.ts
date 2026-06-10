@@ -3,7 +3,7 @@ import { EventoAgenda } from '../types';
 
 /**
  * Serviço para gerenciar o Calendário Eleitoral 2026.
- * Fornece dados estruturados para integração com a Agenda Hub.
+ * Fornece dados estruturados para integração com a Agenda.
  */
 export const getElectoralEvents = (): EventoAgenda[] => {
     return ELECTORAL_CALENDAR_2026.map(milestone => ({

@@ -1,0 +1,35 @@
+name: Deploy to VPS (Portela Hub)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            cd ${{ secrets.VPS_DEPLOY_PATH }}
+            git pull origin main
+            
+            # Instalar dependências (caso haja novas)
+            npm install
+            
+            # Fazer o build de produção (para Vite/React)
+            npm run build
+            
+            # Se for backend/PM2, reiniciar o serviço. Se for apenas Nginx servindo estático, o build basta.
+            # pm2 restart portela-hub
+            echo "Deploy concluído com sucesso!"

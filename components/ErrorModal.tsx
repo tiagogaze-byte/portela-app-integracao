@@ -64,7 +64,7 @@ const ErrorModal: React.FC<ErrorModalProps> = ({
                     </button>
                     
                     <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-tighter">
-                        Envie os detalhes acima para o suporte@portelahub.com
+                        Envie os detalhes acima para o suporte@portela.app
                     </p>
                 </div>
             </div>

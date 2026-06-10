@@ -143,6 +143,17 @@ When auto-applying an agent, inform the user:
 
 ---
 
+## 🚫 PROIBIÇÃO: SUPABASE (PORTELA-HUB ONLY)
+
+> 🔴 **MANDATÓRIO:** O Supabase foi oficialmente descontinuado e removido deste projeto.
+
+1. **Acesso ao Banco:** Deve ser feito EXCLUSIVAMENTE via PostgreSQL nativo através das ferramentas MCP de SQL (`vps_james_sql`).
+2. **Bibliotecas Proibidas:** É terminantemente proibido sugerir ou utilizar `@supabase/supabase-js` ou qualquer SDK relacionado.
+3. **Purgar Memória:** Qualquer lógica baseada em Row Level Security (RLS) do Supabase ou Edge Functions do Supabase deve ser ignorada em favor de implementações SQL e Backend nativas.
+
+---
+
+
 ## TIER 1: CODE RULES (When Writing Code)
 
 ### 📱 Project Type Routing

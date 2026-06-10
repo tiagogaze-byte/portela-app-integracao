@@ -1,24 +1,55 @@
 {
-    "mcpServers": {
-        "context7": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "@upstash/context7-mcp",
-                "--api-key",
-                "YOUR_API_KEY"
-            ]
-        },
-        "shadcn": {
-            "command": "npx",
-            "args": [
-                "shadcn@latest",
-                "mcp"
-            ]
-        }
-        //other mcp servers
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "YOUR_API_KEY"
+      ]
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "vps_james_portela": {
+      "command": "ssh",
+      "args": [
+        "-o", "StrictHostKeyChecking=no",
+        "-o", "BatchMode=yes",
+        "-p", "22",
+        "-i", "/Users/jamesrizo/.ssh/id_james_local",
+        "james_dev@69.62.103.45",
+        "npx", "-y", "@modelcontextprotocol/server-filesystem",
+        "/opt/portela-hub-frontend", "/opt/portela-core", "/opt/portela-hub-backend", "/opt/portelahub"
+      ]
+    },
+    "vps_james_sql_tunnel": {
+      "command": "ssh",
+      "args": [
+        "-o", "StrictHostKeyChecking=no",
+        "-o", "BatchMode=yes",
+        "-o", "ProxyCommand=cloudflared access ssh --hostname hence-saint-dont-came.trycloudflare.com",
+        "-i", "/Users/jamesrizo/.ssh/id_james_local",
+        "james_dev@hence-saint-dont-came.trycloudflare.com",
+        "npx", "-y", "@modelcontextprotocol/server-postgres",
+        "postgresql://portela_hub:PortelaHub2026x@127.0.0.1:5432/portelaapp"
+      ]
+    },
+    "vps_james_sql_api": {
+      "command": "curl",
+      "args": [
+        "-k",
+        "-X",
+        "POST",
+        "https://hub-api.portela.app/mcp-gateway",
+        "-H",
+        "Content-Type: application/json"
+      ]
     }
+  }
 }
-
-// setup mcp server in  ~/.gemini\antigravity\mcp_config.json
-

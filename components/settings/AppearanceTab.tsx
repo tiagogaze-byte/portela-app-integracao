@@ -9,7 +9,7 @@ export const AppearanceTab: React.FC<AppearanceTabProps> = ({ theme, toggleTheme
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
             <h3 className="text-lg md:text-xl font-black text-navy-dark dark:text-white">Aparência</h3>
-            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mb-6 md:mb-8">Personalize a aparência do Portela Hub.</p>
+            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mb-6 md:mb-8">Personalize a aparência do Portela App.</p>
             <div className="flex items-center justify-between p-4 md:p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
                 <div>
                     <span className="font-bold text-sm md:text-base text-navy-dark dark:text-slate-200">Modo Escuro</span>

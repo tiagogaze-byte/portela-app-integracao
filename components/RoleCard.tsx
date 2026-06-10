@@ -172,7 +172,7 @@ export const RoleCard: React.FC<RoleCardProps> = ({
                     return (
                         <div key={item.label} className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 transition-all hover:border-turquoise/30">
                             <div className="flex items-center gap-3">
-                                <span className="material-symbols-outlined text-slate-400 text-lg">{item.icon}</span>
+                                <svg className="text-slate-400 size-5" viewBox="0 0 16 16" fill="none">{item.iconPath}</svg>
                                 <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-tight">{item.label}</span>
                             </div>
                             <label className="relative inline-flex items-center cursor-pointer">

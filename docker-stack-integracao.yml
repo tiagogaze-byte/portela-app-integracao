@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  web:
+    image: nginx:alpine
+    volumes:
+      - /opt/portela-integracao/dist:/usr/share/nginx/html:ro
+      - /opt/portela-integracao/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - uainet
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.network=uainet
+        - traefik.http.routers.portela-integracao.rule=Host(`portela.app`) && PathPrefix(`/integracao`)
+        - traefik.http.routers.portela-integracao.entrypoints=websecure
+        - traefik.http.routers.portela-integracao.tls=true
+        - traefik.http.routers.portela-integracao.tls.certresolver=letsencryptresolver
+        - traefik.http.services.portela-integracao.loadbalancer.server.port=80
+networks:
+  uainet:
+    external: true

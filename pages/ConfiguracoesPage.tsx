@@ -27,7 +27,7 @@ const ConfiguracoesPage: React.FC<ConfiguracoesPageProps> = ({ navigateTo }) => 
     const [activeTab, setActiveTab] = useState('Aparência');
     const [isNovoUsuarioModalOpen, setIsNovoUsuarioModalOpen] = useState(false);
 
-    const isMaster = profile?.role === 'master';
+    const isMaster = profile?.role?.toLowerCase() === 'master';
 
     useEffect(() => {
         if (activeTab === 'Gestão de Acessos' && isMaster) {

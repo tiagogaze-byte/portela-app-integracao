@@ -53,8 +53,11 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    loadPermissions();
-  }, []);
+    const token = localStorage.getItem('portela_hub_token');
+    if (token) {
+      loadPermissions();
+    }
+  }, [user]);
 
   const [filters, setFilters] = useState<AppFilters>({
     regiao: 'Todas as Regiões',

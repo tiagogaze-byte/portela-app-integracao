@@ -266,3 +266,21 @@ export interface Apoiador {
     fotoUrl: string;
     createdAt: string;
 }
+
+export interface Briefing {
+    id: string;
+    titulo: string;
+    descricao?: string;
+    acao_sugerida?: string;
+    prioridade: 'ALTA' | 'MÉDIA' | 'BAIXA';
+    origem: 'Alê Portela' | 'Lincoln Portela' | 'Marilda Portela' | 'Geral';
+    data_publicacao: string;
+}
+
+export interface VotosEleicao {
+    id: string;
+    municipio_id: string;
+    origem: 'Alê Portela' | 'Lincoln Portela' | 'Marilda Portela';
+    ano_eleicao: number;
+    quantidade_votos: number;
+}

@@ -6,7 +6,7 @@
  */
 
 const NOMINATIM_BASE_URL = 'https://nominatim.openstreetmap.org/search';
-const USER_AGENT = 'PortelaHub/1.0';
+const USER_AGENT = 'PortelaApp/1.0';
 
 export interface GeoCoords {
     lat: number;

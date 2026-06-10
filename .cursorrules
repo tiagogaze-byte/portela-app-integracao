@@ -1,0 +1,13 @@
+# Portela-Hub Rules
+
+## 🚫 SUPABASE IS DISCONTINUED
+- Do NOT use `@supabase/supabase-js`.
+- Do NOT suggest Supabase Edge Functions.
+- Do NOT use Supabase Auth.
+
+## 🐘 NATIVE POSTGRESQL ONLY
+- All database operations must use native SQL via MCP (`vps_james_sql`).
+- Architecture is exclusively native PostgreSQL.
+
+## 📁 REPOSITORY SCOPE
+- These rules apply strictly to the Portela project (IP 69.62.103.45).

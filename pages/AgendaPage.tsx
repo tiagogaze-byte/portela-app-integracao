@@ -387,7 +387,7 @@ const AgendaPage: React.FC<AgendaPageProps> = ({ navigateTo, params }) => {
                 `}</style>
                 <div>
 
-                    <h2 className="text-2xl md:text-3xl font-black tracking-tight text-navy-dark dark:text-white">Agenda Hub</h2>
+                    <h2 className="text-2xl md:text-3xl font-black tracking-tight text-navy-dark dark:text-white">Agenda</h2>
                     <p className="text-xs md:text-base text-slate-500 dark:text-slate-400">Sincronização completa com Google e Mandatos.</p>
                 </div>
                 <div className="flex gap-2 w-full md:w-auto">

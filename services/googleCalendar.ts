@@ -185,7 +185,7 @@ export const createGoogleEvent = async (event: Omit<EventoAgenda, 'id'>, calenda
     const resource = {
         summary: event.titulo,
         location: event.local,
-        description: `Criado via Portela Hub. Tipo: ${event.tipo}`,
+        description: `Criado via Portela App. Tipo: ${event.tipo}`,
         start: {
             dateTime: `${event.data}T${event.hora}:00`,
             timeZone: 'America/Sao_Paulo' // Fixed for now, could be dynamic
